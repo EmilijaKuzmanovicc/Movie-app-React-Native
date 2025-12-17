@@ -1,9 +1,9 @@
+import { COLORS } from "@/app/constants/colors";
 import { Platform, StyleSheet, useWindowDimensions } from "react-native";
 
 function movieStyle() {
-  const size = Platform.OS === "web" ? 7 : 4;
   const { width, height } = useWindowDimensions();
-  console.log("width", width);
+  const size = Platform.OS === "web" ? (width < 500 ? 4 : width / 300 + 1) : 4;
   const cardWidth = width / size;
   const cardHeight = width / size;
 
@@ -11,14 +11,14 @@ function movieStyle() {
     image: {
       width: cardWidth,
       height: cardHeight * 1.4,
-      borderRadius: 5,
-      backgroundColor: "#514e4eff",
+      borderRadius: 12,
+      backgroundColor: COLORS.GREY,
     },
     text: {
       paddingTop: 4,
       fontSize: 3 * size,
       width: cardWidth,
-      color: "#fff",
+      color: COLORS.WHITE,
     },
     movieContainer: {
       padding: 12,
